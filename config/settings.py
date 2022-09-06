@@ -14,9 +14,9 @@ from pathlib import Path
 import environ
 # Configure Django App for Heroku
 import django_on_heroku
-django_on_heroku.settings(locals())
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -93,7 +93,7 @@ DATABASES = {
     #
     # )
 }
-del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']
 
 
 # Password validation
@@ -140,3 +140,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "habit_tracker_app.CustomUser"
 SIMPLE_BACKEND_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
+
+django_on_heroku.settings(locals())
