@@ -93,7 +93,7 @@ DATABASES = {
     #
     # )
 }
-del DATABASES['default']
+#del DATABASES['default']['OPTIONS']['sslmode']
 
 
 # Password validation
@@ -142,3 +142,4 @@ SIMPLE_BACKEND_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
 django_on_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
