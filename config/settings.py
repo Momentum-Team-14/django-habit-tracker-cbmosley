@@ -85,13 +85,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(),
+    # 'default': env.db(),
 
-    # 'extra': env.db_url(
-    #    'SQLITE_URL',
-    #    default='sqlite:////tmp/my-sqlite.db'
-    #
-    # )
+    'default': {
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME': 'django-habit-tracker',
+        'USER': 'django-habit-tracker',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 #del DATABASES['default']['OPTIONS']['sslmode']
 
