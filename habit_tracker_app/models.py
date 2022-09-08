@@ -27,9 +27,9 @@ class DailyRecord(models.Model):
     habit = models.ForeignKey(
         Habit, on_delete=models.CASCADE, related_name='habit')
     date = models.DateField(null=True)
-    past_action = models.CharField(max_length=20)
-    amount = models.IntegerField(null=True)
-    unit = models.CharField(max_length=10)
+    #past_action = models.CharField(max_length=20)
+    daily_amount = models.IntegerField(null=True)
+    #unit = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"I {self.past_action} {self.amount} {self.unit} on {self.date}"
+        return str(self.date)
