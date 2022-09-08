@@ -25,11 +25,11 @@ class Habit(models.Model):
 
 class DailyRecord(models.Model):
     habit = models.ForeignKey(
-        Habit, on_delete=models.CASCADE, related_name='habit')
+        Habit, on_delete=models.CASCADE, related_name='records')
     date = models.DateField(null=True)
     #past_action = models.CharField(max_length=20)
     daily_amount = models.IntegerField(null=True)
     #unit = models.CharField(max_length=10)
 
     def __str__(self):
-        return str(self.date)
+        return f"{self.daily_amount} {self.habit.unit}"

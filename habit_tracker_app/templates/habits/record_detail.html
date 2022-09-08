@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %} Records:
+<ul>
+  {% for record in records %}
+  <li><a href="{% url 'record_detail' pk=record.pk %}">{{ record }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
