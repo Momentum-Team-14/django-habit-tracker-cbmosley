@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<h1>Edit Habit</h1>
+
+<div>
+  <form action="{% url 'edit_habit' pk=habit.pk %}" method="POST">
+    {% csrf_token %}
+    <div>
+      <label for="{{form.habit_action.id_for_label}}"
+        >{{ form.habit_action.label }}</label
+      >
+    </div>
+    <div>
+      <label for="{{form.amount.id_for_label}}">{{ form.amount.label}}</label>
+    </div>
+  </form>
+</div>

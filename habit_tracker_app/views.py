@@ -34,18 +34,35 @@ def add_habit(request):
     else:
         form = HabitForm()
 
-    return render(request, "habits/add_habit.html", {"form": form})
+    return render(request, "habits/add_habit.html", {"form": form, "text_for_labels": {"habit_action": "example: run, read, walk", "amount": "example"}})
 
 
-def add_record(request):
+def edit_habit(request, pk):
+    habit = get_object_or_404(Habit, pk=pk)
+    if request.method == "GET":
+        form = HabitForm(instance=habit)
+    else:
+        form = HabitForm(data=request.POST, instance=habit)
+        if form.is_valid():
+            form.save()
+            return redirect("habit_detail")
+        else:
+            print(form.errors)
+
+    return render(request, "habits/edit_habit.html", {"form": form, "habit": habit})
+
+
+def add_record(request, pk):
+    habit = get_object_or_404(Habit, pk=pk)
     if request.method == "POST":
         form = DailyRecordForm(data=request.POST)
         if form.is_valid():
             habit_record = form.save(commit=False)
             habit_record.user = request.user
+            habit_record.habit = habit
             habit_record.save()
 
-            return redirect("habit_detail", pk=habit_record.pk)
+            return redirect("habit_detail", pk=habit.pk)
     else:
         form = DailyRecordForm()
 

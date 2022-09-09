@@ -3,7 +3,9 @@
 <form method="POST" class="new-habit">
   {% csrf_token %} {% for field in form %}
   <div>
-    <label for="{{field.id_for_label}}">{{ field.label}}</label>
+    <label for="{{field.id_for_label}}"
+      >{{ field.label}} {{text_for_labels[field.name]}}</label
+    >
     {{ field }}
   </div>
   {% endfor %}

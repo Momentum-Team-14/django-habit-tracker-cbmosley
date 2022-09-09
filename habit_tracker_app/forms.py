@@ -6,10 +6,12 @@ class HabitForm(forms.ModelForm):
 
     class Meta:
         model = Habit
-        fields = ('user', 'habit_action', 'amount', 'unit')
+        fields = ('habit_action', 'amount', 'unit')
 
 
 class DailyRecordForm(forms.ModelForm):
+    date = forms.DateField(widget=forms.SelectDateWidget(
+        empty_label=('Choose Year', 'Choose Month', 'Choose Day')))
 
     class Meta:
         model = DailyRecord
