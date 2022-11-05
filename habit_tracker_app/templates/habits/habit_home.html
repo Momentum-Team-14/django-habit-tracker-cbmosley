@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Habits:</h2>
+
+<ul>
+  {% for habit in habits %}
+
+  <li>
+    <a class="snippet-detail" href="{% url 'habit_detail' pk=habit.pk %}"
+      >{{ habit }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+<br />
+<div><a href="{% url 'add_habit' %}">Add new habit</a></div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <h4>Hello, {{user}} you are logged in!</h4>
+    <a href="/accounts/logout">Logout</a>
+    {% else %}
+    <h2>Login to see your Habit Tracker</h2>
+    <a href="/accounts/login">Login</a>
+    {% endif %}
+    <header>
+      <h1>Habit Tracker</h1>
+    </header>
+    <hr />
+    {% block content %} {% endblock %}
+  </body>
+</html>

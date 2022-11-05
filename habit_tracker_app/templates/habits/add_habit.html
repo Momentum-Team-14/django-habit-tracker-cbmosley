@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Add a new Habit</h2>
+<form method="POST" class="new-habit">
+  {% csrf_token %} {% for field in form %}
+  <div>
+    <label for="{{field.id_for_label}}"
+      >{{ field.label}} {{text_for_labels[field.name]}}</label
+    >
+    {{ field }}
+  </div>
+  {% endfor %}
+  <button type="submit" class="save btn btn-secondary">Save</button>
+</form>
+
+{% endblock %}

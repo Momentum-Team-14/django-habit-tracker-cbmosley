@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<header>
+  <h2>{{ habit }}</h2>
+  <div><a href="{% url 'edit_habit' pk=habit.pk %}">Edit Habit</a></div>
+  <div><a href="">Delete Habit</a></div>
+  <h2>
+    <p>Records</p>
+  </h2>
+</header>
+<ul>
+  {% for habit_record in habit_records %}
+  <li>
+    <a href="{% url 'record_detail' pk=habit_record.pk %}"
+      >{{ habit_record }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+<br />
+<div>
+  <a href="{% url 'add_record' pk=habit.pk %}">Add new record</a>
+</div>
+{% endblock %}
